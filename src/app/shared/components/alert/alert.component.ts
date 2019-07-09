@@ -1,0 +1,46 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { AlertService } from './alert.service';
+import { Alert, AlertType } from './alert';
+
+@Component({
+  selector: 'app-alert',
+  templateUrl: './alert.component.html',
+  styleUrls: ['./alert.component.css']
+})
+export class AlertComponent {
+  @Input() timeout = 2000;
+
+  public alerts: Alert[] = [];
+
+  constructor(alerService: AlertService) {
+    alerService.getAlert().subscribe(alert => {
+      if (!alert) {
+        this.alerts = [];
+        return;
+      }
+      this.alerts.push(alert);
+      setTimeout(() => this.removeAlert(alert), this.timeout);
+    });
+  }
+
+  private removeAlert(alertToRemove: Alert) {
+    this.alerts = this.alerts.filter(alert => alert != alertToRemove);
+  }
+
+  public getAlertClass(alert: Alert) {
+    if (alert) {
+      switch (alert.alertType) {
+        case AlertType.DANGER:
+          return 'alert alert-danger';
+        case AlertType.INFO:
+          return 'alert alert-info';
+        case AlertType.SUCCESS:
+          return 'alert alert-success';
+        case AlertType.WARNING:
+          return 'alert alert-warning';
+        default:
+          break;
+      }
+    }
+  }
+}

@@ -12,28 +12,28 @@ CREATE TABLE IF NOT EXISTS user (
 )
 `;
 
-const INSERT_DEFAULT_USER_1 = 
-`
+const INSERT_DEFAULT_USER_1 =
+    `
 INSERT INTO user (
     user_name, 
     user_email,
     user_password,
     user_full_name
-) SELECT 'flavio', 'flavio@alurapic.com.br', '123', 'Flávio' WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'flavio')
+) SELECT 'flavio', 'flavio@api.com', '123', 'Flávio' WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'flavio')
 `;
 
-const INSERT_DEFAULT_USER_2 = 
-`
+const INSERT_DEFAULT_USER_2 =
+    `
 INSERT INTO user (
     user_name, 
     user_email,
     user_password,
     user_full_name
-) SELECT 'almeida', 'almeida@alurapic.com.br', '123', 'Almeida' WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'almeida')
+) SELECT 'almeida', 'almeida@api.com', '123', 'Almeida' WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'almeida')
 `;
 
-const PHOTO_SCHEMA = 
-`
+const PHOTO_SCHEMA =
+    `
 CREATE TABLE IF NOT EXISTS photo (
     photo_id INTEGER PRIMARY KEY AUTOINCREMENT,
     photo_post_date TIMESTAMP NOT NULL, 
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS photo (
 `;
 
 const COMMENT_SCHEMA =
-`
+    `
 CREATE TABLE IF NOT EXISTS comment (
     comment_id INTEGER   PRIMARY KEY AUTOINCREMENT,
     comment_date TIMESTAMP NOT NULL,
@@ -76,9 +76,9 @@ db.serialize(() => {
     db.run(USER_SCHEMA);
     db.run(INSERT_DEFAULT_USER_1);
     db.run(INSERT_DEFAULT_USER_2);
-    db.run(PHOTO_SCHEMA);        
-    db.run(COMMENT_SCHEMA);     
-    db.run(LIKE_SCHEMA);        
+    db.run(PHOTO_SCHEMA);
+    db.run(COMMENT_SCHEMA);
+    db.run(LIKE_SCHEMA);
 
     db.each("SELECT * FROM user", (err, user) => {
         console.log('Users');
