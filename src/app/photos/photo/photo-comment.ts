@@ -1,5 +1,5 @@
 export interface PhotoComment {
-    date: Date;
-    text: string;
-    userName: string;
+  date: Date;
+  text: string;
+  userName: string;
 }

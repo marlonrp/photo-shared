@@ -6,12 +6,12 @@ import { DarkenOnHoverModule } from '../shared/directives/darken-on-hover/darken
 import { PhotoDetailsModule } from './photo-details/photo-details.module';
 
 @NgModule({
-    imports: [
-        PhotoModule,
-        PhotoFormModule,
-        PhotoListModule,
-        PhotoDetailsModule,
-        DarkenOnHoverModule
-    ]
+  imports: [
+    PhotoModule,
+    PhotoFormModule,
+    PhotoListModule,
+    PhotoDetailsModule,
+    DarkenOnHoverModule
+  ]
 })
 export class PhotosModule {}

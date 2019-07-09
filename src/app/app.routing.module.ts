@@ -9,42 +9,39 @@ import { AuthGuard } from './core/auth/auth.guard';
 import { PhotoDetailsComponent } from './photos/photo-details/photo-details.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'home'
-    },
-    {
-        path: 'home',
-        loadChildren: './home/home.module#HomeModule'
-    },
-    {
-        path: 'user/:userName',
-        component: PhotoListComponent,
-        resolve: {
-            photos: PhotoListResolver
-        }
-    },
-    {
-        path: 'p/add',
-        component: PhotoFormComponent,
-        canActivate: [AuthGuard],
-    },
-    {
-        path: 'p/:photoId',
-        component: PhotoDetailsComponent
-    },
-    {
-        path: '**',
-        component: NotFoundComponent
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home'
+  },
+  {
+    path: 'home',
+    loadChildren: './home/home.module#HomeModule'
+  },
+  {
+    path: 'user/:userName',
+    component: PhotoListComponent,
+    resolve: {
+      photos: PhotoListResolver
     }
+  },
+  {
+    path: 'p/add',
+    component: PhotoFormComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'p/:photoId',
+    component: PhotoDetailsComponent
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot(routes, { useHash: true } )
-    ],
-    exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule]
 })
-export class AppRoutingModule { }
-
+export class AppRoutingModule {}

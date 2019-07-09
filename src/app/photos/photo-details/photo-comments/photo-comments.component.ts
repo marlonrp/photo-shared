@@ -19,7 +19,7 @@ export class PhotoCommentsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private photoService: PhotoService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getComments();
@@ -38,11 +38,9 @@ export class PhotoCommentsComponent implements OnInit {
 
   public publishComment() {
     const commentText = this.commentForm.get('comment').value;
-    this.photoService.addComment(this.photoId, commentText)
-      .subscribe(() => {
-        this.commentForm.reset();
-        this.getComments();
-      });
+    this.photoService.addComment(this.photoId, commentText).subscribe(() => {
+      this.commentForm.reset();
+      this.getComments();
+    });
   }
-
 }

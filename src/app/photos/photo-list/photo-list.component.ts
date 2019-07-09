@@ -10,7 +10,6 @@ import { PhotoService } from '../photo/photo.service';
   styleUrls: ['./photo-list.component.css']
 })
 export class PhotoListComponent implements OnInit {
-
   photos: Photo[] = [];
   filter = '';
   hasMore = true;
@@ -20,7 +19,7 @@ export class PhotoListComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private photoService: PhotoService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {

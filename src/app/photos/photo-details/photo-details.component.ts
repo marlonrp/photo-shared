@@ -18,11 +18,10 @@ export class PhotoDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private photoService: PhotoService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.photoId = this.route.snapshot.params.photoId;
     this.photo$ = this.photoService.findById(this.photoId);
   }
-
 }

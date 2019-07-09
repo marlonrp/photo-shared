@@ -7,18 +7,15 @@ import { RequestInterceptor } from './auth/request.interceptor';
 import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-    declarations: [HeaderComponent, FooterComponent],
-    exports: [HeaderComponent, FooterComponent],
-    imports: [
-        CommonModule,
-        RouterModule
-    ],
-    providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: RequestInterceptor,
-            multi: true
-        }
-    ]
+  declarations: [HeaderComponent, FooterComponent],
+  exports: [HeaderComponent, FooterComponent],
+  imports: [CommonModule, RouterModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptor,
+      multi: true
+    }
+  ]
 })
-export class CoreModule { }
+export class CoreModule {}

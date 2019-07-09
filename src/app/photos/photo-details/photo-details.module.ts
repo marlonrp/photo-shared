@@ -18,4 +18,4 @@ import { VMessageModule } from 'src/app/shared/components/vmessage/vmessage.modu
   ],
   declarations: [PhotoDetailsComponent, PhotoCommentsComponent]
 })
-export class PhotoDetailsModule { }
+export class PhotoDetailsModule {}
