@@ -21,6 +21,7 @@ export class PhotoService {
   }
 
   public upload(formData: FormData) {
+    console.log(formData);
     return this.http.post(`${API}/photos/upload`, formData);
   }
 

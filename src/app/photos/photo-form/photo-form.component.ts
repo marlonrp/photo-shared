@@ -26,8 +26,8 @@ export class PhotoFormComponent implements OnInit {
 
   ngOnInit() {
     this.photoForm = this.formBuilder.group({
-      file: ['', Validators.required],
-      description: ['', Validators.maxLength(300)],
+      file: [undefined, Validators.required],
+      description: [undefined, Validators.compose([Validators.maxLength(300), Validators.required])],
       allowComments: [true]
     });
   }
@@ -45,6 +45,7 @@ export class PhotoFormComponent implements OnInit {
   }
 
   public handleFile(file: File) {
+    console.log(file);
     this.file = file;
     const reader = new FileReader();
     reader.onload = (event: any) => (this.preview = event.target.result);
